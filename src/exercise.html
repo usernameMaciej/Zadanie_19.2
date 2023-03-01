@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Hasło</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-1">
+        <label for="pass1">Hasło</label>
+        <input id="pass1" name="" type="password" onkeyup="return validate()">
+    </div>
+    <div class="col-md-1">
+        <label for="pass2">Powtórz hasło</label>
+        <input id="pass2" name="repeatPassword" type="password">
+    </div>
+    <div class="errors">
+        <ul>
+            <li id="length">Minimum 8 znaków</li>
+            <li id="bigNumber">Minimum 1 duża litera</li>
+            <li id="littleNumber">Minimum 1 mała litera</li>
+            <li id="specialSign">Minimum 1 znak specjalny</li>
+            <li id="samePasswords">Hasło i powtórzone hasło muszą być takie same</li>
+        </ul>
+    </div>
+</div>
+<script>
+    function validate() {
+        var pass1 = document.getElementById('pass1');
+        var pass2 = document.getElementById('pass2');
+
+        var pass = document.getElementById('pass1');
+        var length = document.getElementById('length');
+        var bigNumber = document.getElementById('bigNumber');
+        var littleNumber = document.getElementById('littleNumber');
+        var specialSign = document.getElementById('specialSign');
+        var samePasswords = document.getElementById('samePasswords');
+
+        if (pass.value.length > 8) {
+            length.style.color = 'green';
+        } else {
+            length.style.color = 'red';
+        }
+        if (pass.value.match(/[A-Z]/)) {
+            bigNumber.style.color = 'green';
+        } else {
+            bigNumber.style.color = 'red';
+        }
+        if (pass.value.match(/[a-z]/)) {
+            littleNumber.style.color = 'green';
+        } else {
+            littleNumber.style.color = 'red';
+        }
+        if (pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/)) {
+            specialSign.style.color = 'green';
+        } else {
+            specialSign.style.color = 'red';
+        }
+        if (pass1.value === pass2.value) {
+            samePasswords.style.color = 'green';
+        } else {
+            samePasswords.style.color = 'red';
+        }
+    }
+</script>
+</body>
+</html>
